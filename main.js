@@ -63,3 +63,15 @@ menu_button.addEventListener("click", function(e){
 
     
 })
+
+var project_boxes = document.querySelectorAll("#projects .grid");
+console.log(project_boxes);
+for (let box of project_boxes){
+    box.addEventListener("mouseover", function(e){
+        box.querySelector("a").hidden = false;
+    });
+
+    box.addEventListener("mouseout", function(e){
+        box.querySelector("a").hidden = true;
+    });
+}
