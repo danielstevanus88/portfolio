@@ -144,12 +144,12 @@ nav a{
 }
 
 #profile .jumbotron-background.onscroll{
-    position: absolute;
-    top:-50vh;
+    position: fixed;
+    top:-70px;
     left:-25%;
     z-index: -1;
     width: 200%;
-    height: 1000%;
+    height: calc(100% + 70px);
     background-size: 200px 200px;
     background-repeat: repeat;
     transition: 1s;
@@ -280,7 +280,7 @@ nav a{
 @media (max-width: 576px){
     #projects .grid{
         grid-template-columns: auto;
-        grid-template-rows: 220px 40px auto auto;
+        grid-template-rows: auto 40px auto auto;
         border: solid 2px black;
         padding: 10px;
         margin: 20px 0;
@@ -303,9 +303,10 @@ nav a{
         grid-area: 4/1/4/1;
     }
 
-
-
-
+    .grid-image img{
+        width: 100%;
+        height: auto;
+    }
 }
 
 
@@ -324,4 +325,8 @@ nav a{
 
     text-align: center;
     align-content: center;
+}
+
+footer{
+    text-align: center;
 }
