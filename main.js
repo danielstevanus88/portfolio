@@ -4,6 +4,9 @@ var nav = document.querySelector("nav");
 var menu_dropdown = document.querySelector(".menu-dropdown");
 var menu_button = document.querySelector("#menu-button");
 var menu_items = menu_dropdown.children;
+
+var jumbotron_background = document.querySelector("#profile .jumbotron-background");
+
 document.addEventListener("scroll", function(e){
     let nav_items = nav.querySelectorAll("nav .flex-item a, nav .flex-item i");
     // console.log(nav_items);
@@ -16,6 +19,8 @@ document.addEventListener("scroll", function(e){
             item.style.color = "black";
 
         header.style.opacity = 1;
+
+        jumbotron_background.classList.remove("onscroll");
     }
     else {
         header.style.backgroundColor = "black";  
@@ -30,6 +35,7 @@ document.addEventListener("scroll", function(e){
             item.style.opacity = 1;
         }
         
+        jumbotron_background.classList.add("onscroll");
         
     }
 });
@@ -75,3 +81,4 @@ for (let box of project_boxes){
         box.querySelector("a").hidden = true;
     });
 }
+
