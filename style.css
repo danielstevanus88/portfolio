@@ -1,6 +1,74 @@
 :root{
     --phone_size: 576px;
 }
+@media (max-width: 1054px) {
+    @keyframes translation {
+        0%{
+            translate: 0px 0px;
+        }
+        15%{
+            translate: 0px 0px;
+        }
+        20%{
+            translate: 0px -60px;
+        }
+        35%{
+            translate: 0px -60px;
+        }
+        40%{
+            translate: 0px -120px;
+        }
+        55%{
+            translate: 0px -120px;
+        }
+        60%{
+            translate: 0px -180px;
+        }
+    
+        75%{
+            translate: 0px -180px;
+        }
+    
+        80%{
+            translate: 0px -240px;
+        }
+    
+        95%{
+            translate: 0px -240px;
+        }
+    
+        100%{
+            translate: 0px 0px;
+        }
+    }
+}
+
+@media (min-width: 1054px) {
+    @keyframes translation {
+        0%{
+            translate: 0px 0px;
+        }
+        40%{
+            translate: 0px 0px;
+        }
+        45%{
+            translate: 0px -60px;
+        }
+        60%{
+            translate: 0px -60px;
+        }
+        65%{
+            translate: 0px -120px;
+        }
+        95%{
+            translate: 0px -120px;
+        }
+    
+        100%{
+            translate: 0px 0px;
+        }
+    }
+}
 
 /* All */
 *{
@@ -160,6 +228,13 @@ nav a{
 #profile .short-description{
     font-size: 40pt;
     text-shadow: 5px 5px slategrey;
+    overflow-y: hidden;
+    height: 60px;
+}
+
+#profile .short-description .short-title{
+    animation: translation 5s infinite;
+
 }
 
 @media (min-width: 576px){
