@@ -196,6 +196,7 @@ nav a{
 
 #profile .profile-picture img{
     border-radius: 50%;
+    box-shadow: 5px 5px 20px slategrey;
 }
 #profile .jumbotron-background{
     position: absolute;
