@@ -297,7 +297,9 @@ nav div div a{
         height: auto;
 
     }
-
+    #gallery .flex-item{
+        width: 33.33%;
+    }
     #gallery .gallery-image{
         width: 100%;
         height: auto;
