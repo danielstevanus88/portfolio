@@ -147,6 +147,7 @@ nav div div a{
 .menu-dropdown .menu-item{
     padding: 1px 10px;
     margin: 10px 0;
+    text-decoration: none;
 }
 
 .menu-open{
@@ -243,7 +244,7 @@ nav div div a{
 
 }
 
-#showcase .main-img{
+#description .main-img{
     margin: 50px 0;
 }
 
@@ -254,7 +255,8 @@ nav div div a{
 
 #gallery .flex-item{
     margin: 0px;
-    flex: 1 1 0.5;
+    width: 33.33%;
+
 }
 
 @media (min-width: 576px){
@@ -285,20 +287,17 @@ nav div div a{
 
     
 
-    #showcase .main-img{
+    #description .main-img{
         width: 100%; 
         height: auto;
         max-height: 200px;
         object-fit:scale-down
     }
 
-    #showcase .main-description{
+    #description .main-description{
         width: 100%;
         height: auto;
 
-    }
-    #gallery .flex-item{
-        width: 33.33%;
     }
     #gallery .gallery-image{
         width: 100%;
@@ -333,14 +332,14 @@ nav div div a{
         width: 90%;
     }
 
-    #showcase .main-img{
+    #description .main-img{
         width: 100%; 
         height: auto;
         max-height: 200px;
         object-fit:scale-down
     }
 
-    #showcase .main-description{
+    #description .main-description{
         width: 100%;
         height: auto;
 
@@ -467,6 +466,7 @@ nav div div a{
 }
 
 footer{
+    margin: 10px 0;
     text-align: center;
 }
 
