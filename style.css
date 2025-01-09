@@ -7,51 +7,90 @@
 }
 
 @media (max-width: 1054px) {
+    
+    #profile .short-description{
+        font-size: 40pt;
+        text-shadow: 5px 5px slategrey;
+        overflow-y: hidden;
+        height: 48px;
+    }
+    #profile .short-description .short-title{
+        animation: translation 5s infinite;
+        font-size: 32pt;
+    }
+
     @keyframes translation {
         0%{
             translate: 0px 0px;
+            opacity: 1;
         }
         15%{
             translate: 0px 0px;
         }
         20%{
-            translate: 0px -60px;
+            translate: 0px -48px;
         }
         35%{
-            translate: 0px -60px;
+            translate: 0px -48px;
         }
         40%{
-            translate: 0px -120px;
+            translate: 0px -96px;
         }
         55%{
-            translate: 0px -120px;
+            translate: 0px -96px;
         }
         60%{
-            translate: 0px -180px;
+            translate: 0px -144px;
         }
     
         75%{
-            translate: 0px -180px;
+            translate: 0px -144px;
         }
     
         80%{
-            translate: 0px -240px;
+            translate: 0px -192px;
         }
     
         95%{
-            translate: 0px -240px;
+            translate: 0px -192px;
+        }
+
+        98%{
+            translate: 0px -192px;
+            opacity: 1;
+        }
+
+        99%{
+            translate: 0px -192px;
+            opacity: 0;
         }
     
         100%{
             translate: 0px 0px;
+            opacity: 0;
         }
     }
 }
 
 @media (min-width: 1054px) {
+
+    
+    #profile .short-description{
+        font-size: 40pt;
+        text-shadow: 5px 5px slategrey;
+        overflow-y: hidden;
+        height: 60px;
+    }
+
+    #profile .short-description .short-title{
+        animation: translation 5s infinite;
+        font-size: 40pt;
+
+    }
     @keyframes translation {
         0%{
             translate: 0px 0px;
+            opacity: 1;
         }
         40%{
             translate: 0px 0px;
@@ -68,9 +107,18 @@
         95%{
             translate: 0px -120px;
         }
-    
+        98%{
+            translate: 0px -120px;
+            opacity: 1;
+        }
+        
+        99%{
+            translate: 0px -120px;
+            opacity: 0;
+        }
         100%{
             translate: 0px 0px;
+            opacity: 0;
         }
     }
 }
@@ -231,19 +279,6 @@ nav div div a{
     overflow: hidden;
     
 }
-
-#profile .short-description{
-    font-size: 40pt;
-    text-shadow: 5px 5px slategrey;
-    overflow-y: hidden;
-    height: 60px;
-}
-
-#profile .short-description .short-title{
-    animation: translation 5s infinite;
-
-}
-
 #description .main-img{
     margin: 50px 0;
 }
