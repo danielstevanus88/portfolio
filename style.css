@@ -1,6 +1,11 @@
 :root{
     --phone_size: 576px;
 }
+
+*{
+    font-size: 1.1rem;
+}
+
 @media (max-width: 1054px) {
     @keyframes translation {
         0%{
@@ -117,7 +122,7 @@ nav, .menu-dropdown{
     border-bottom: solid 1px black;
 }
 
-nav a{
+nav div div a{
     text-decoration: none;
 }
 
@@ -238,6 +243,20 @@ nav a{
 
 }
 
+#showcase .main-img{
+    margin: 50px 0;
+}
+
+#gallery .flex-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+#gallery .flex-item{
+    margin: 0px;
+    flex: 1 1 0.5;
+}
+
 @media (min-width: 576px){
     #profile .flex-container{
         flex-direction: row;
@@ -262,6 +281,27 @@ nav a{
 
     main, nav, .menu-dropdown{
         width: 70%;
+    }
+
+    
+
+    #showcase .main-img{
+        width: 100%; 
+        height: auto;
+        max-height: 200px;
+        object-fit:scale-down
+    }
+
+    #showcase .main-description{
+        width: 100%;
+        height: auto;
+
+    }
+
+    #gallery .gallery-image{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
     }
 }
 
@@ -289,6 +329,25 @@ nav a{
 
     main, nav, .menu-dropdown{
         width: 90%;
+    }
+
+    #showcase .main-img{
+        width: 100%; 
+        height: auto;
+        max-height: 200px;
+        object-fit:scale-down
+    }
+
+    #showcase .main-description{
+        width: 100%;
+        height: auto;
+
+    }
+
+    #gallery .gallery-image{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
     }
 }
 
