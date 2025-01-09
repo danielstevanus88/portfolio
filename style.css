@@ -294,6 +294,17 @@ nav div div a{
 
 }
 
+#gallery .flex-container-pc{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+#gallery .flex-item-pc{
+    margin: 10px 0px;
+    padding: 5px;
+    width: 50%;
+
+}
 @media (min-width: 576px){
     #profile .flex-container{
         flex-direction: row;
@@ -325,7 +336,7 @@ nav div div a{
     #head .main-img{
         width: 100%; 
         height: auto;
-        max-height: 200px;
+        /* max-height: 200px; */
         object-fit:scale-down
     }
 
@@ -554,4 +565,8 @@ footer{
 
 #head .flex-item .button-3{
     margin: 0 0 0 10px;;
+}
+.btn-disable{
+    background-color: darkgray;
+    border: solid 2px darkgray;
 }
