@@ -570,3 +570,7 @@ footer{
     background-color: darkgray;
     border: solid 2px darkgray;
 }
+
+.button-1:not(.btn-disable):hover, .button-2:not(.btn-disable):hover, .button-3:not(.btn-disable):hover{
+    cursor: pointer;
+}
