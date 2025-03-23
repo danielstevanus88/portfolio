@@ -574,3 +574,9 @@ footer{
 .button-1:not(.btn-disable):hover, .button-2:not(.btn-disable):hover, .button-3:not(.btn-disable):hover{
     cursor: pointer;
 }
+
+
+#highlight #highlight-video{
+    width: 100%;
+    height: 500px;
+}

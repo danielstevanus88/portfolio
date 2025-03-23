@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel - Mister I</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <script src="email.js" defer></script>
+    <script src="main.js" defer></script>
+    <script defer>AOS.init();</script>
+    <header>
+        <nav>
+            <div class="flex-container phone-off">
+                <div class="flex-item"><a href="index.html">Back (Main Page)</a></div>
+                <div class="flex-item"><a href="#description">Project Description</a></div>
+                <div class="flex-item"><a href="#gallery">Project Gallery</a></div>
+            </div>
+
+            <div class="flex-container phone-on">
+                <div class="flex-item">
+                    Misteri
+                </div>
+
+                <div class="flex-item" id="menu-button">
+                    <i class="fa fa-bars fa-white" aria-hidden="true"></i>
+                </div>
+            </div>
+        </nav>
+
+        <div class="menu-dropdown phone-on menu-close">
+           <a href="index.html" class="menu-item menu-item-close">Back (Main Page)</a>
+            <a href="#description" class="menu-item menu-item-close">Project Description</a>
+            <a href="#gallery" class="menu-item menu-item-close">Project Gallery</a>
+        </div>
+
+    </header>
+
+    <main>
+
+        <section id="head">
+            
+            <section id="highlight">
+                <h2>Highlights</h2>
+                <iframe id="highlight-video" src="https://www.youtube.com/embed/nYa0j_x-AEU" title="Mister I - Horror Game Project" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </section>
+            <div class="flex-container">
+                <div class="flex-item btn-disable">
+                    <a href="https://github.com/danielstevanus88/Planetze" target="_blank"><button class="button-1">💻 Github</button></a>
+                </div>
+                <div class="flex-item">
+                    <a href="https://youtu.be/nYa0j_x-AEU" target="_blank"><button class="button-2">▶️ Youtube</button></a>
+                </div>
+                
+                <div class="flex-item">
+                    
+                    <button class="button-3 btn-disable">📥 Download (X)</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="description">
+            <div class="main-description">
+                <h1>Description</h1>
+                <p>Mister I is a single player horror game, where player has to get all 8 cloths and avoid being caught by the
+                   Indonesian ghost 'Pocong'. 
+                </p>
+                <p>Project is built with:</p>
+                <ul>
+                    <li>
+                        Unity
+                    </li>
+                    <li>
+                        Blender for 3D Objects
+                    </li>
+                    <li>
+                        Sketchfab (for references and 3D objects)
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2>Gallery</h2>
+            <div class="flex-container">
+                <div class="flex-item">
+                    <img class="gallery-image" src="img/misteri-1.png" alt="">
+                </div>
+                <div class="flex-item">
+                    <img class="gallery-image" src="img/misteri-2.png" alt="">
+                </div>
+                
+                <div class="flex-item">
+                    <img class="gallery-image" src="img/misteri-3.png" alt="">
+                </div>
+            </div>
+
+            <div class="flex-container">
+                <div class="flex-item">
+                    <img class="gallery-image" src="img/misteri-4.png" alt="">
+                </div>
+                <div class="flex-item">
+                    <img class="gallery-image" src="img/misteri-5.png" alt="">
+                </div>
+                
+                <div class="flex-item">
+                    <img class="gallery-image" src="img/misteri-6.png" alt="">
+                </div>
+            </div>
+            
+            
+          
+
+        </section>
+
+
+    </main>
+
+    <footer>
+        Copyright © 2024 Daniel Stevanus
+    </footer>
+
+</body>
+
+</html>
