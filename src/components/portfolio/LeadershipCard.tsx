@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+import { useScrollAnimation, scrollVariants, scrollTransition } from "@/hooks/useScrollAnimation";
+
 interface LeadershipCardProps {
   title: string;
   role: string;
@@ -13,35 +16,69 @@ const LeadershipCard = ({
   description,
   highlights,
 }: LeadershipCardProps) => {
-  return (
-    <article className="py-8 border-b border-rule last:border-b-0">
-      <div className="flex flex-wrap items-baseline justify-between gap-3 mb-4">
-        <div>
-          <h3 className="font-display text-xl font-medium">{title}</h3>
-          <p className="text-ink-muted italic">{role}</p>
-        </div>
-        {period && <span className="text-sm text-ink-muted">{period}</span>}
-      </div>
+  const { ref, isInView } = useScrollAnimation();
 
-      <div className="space-y-3 mb-4">
+  return (
+    <motion.article
+      ref={ref}
+      className="py-8 border-b border-rule last:border-b-0"
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={scrollVariants.fadeUp}
+      transition={scrollTransition}
+    >
+      <motion.div
+        className="flex flex-wrap items-baseline justify-between gap-3 mb-4"
+        variants={scrollVariants.fadeUp}
+        transition={{ ...scrollTransition, delay: 0.1 }}
+      >
+        <div>
+          <h3 className="font-display text-xl font-semibold">{title}</h3>
+          <p className="text-accent">{role}</p>
+        </div>
+        {period && (
+          <motion.span
+            className="text-sm text-ink-muted px-3 py-1 rounded-full bg-secondary"
+            whileHover={{ scale: 1.05 }}
+          >
+            {period}
+          </motion.span>
+        )}
+      </motion.div>
+
+      <motion.div
+        className="space-y-3 mb-4"
+        variants={scrollVariants.fadeUp}
+        transition={{ ...scrollTransition, delay: 0.15 }}
+      >
         {description.map((paragraph, index) => (
           <p key={index} className="text-ink-light">
             {paragraph}
           </p>
         ))}
-      </div>
+      </motion.div>
 
       {highlights && highlights.length > 0 && (
-        <ul className="space-y-1">
+        <motion.ul
+          className="space-y-2"
+          variants={scrollVariants.fadeUp}
+          transition={{ ...scrollTransition, delay: 0.2 }}
+        >
           {highlights.map((highlight, index) => (
-            <li key={index} className="flex items-start gap-2 text-sm text-ink-muted">
-              <span className="text-burgundy">•</span>
+            <motion.li
+              key={index}
+              className="flex items-start gap-3 text-sm text-ink-muted"
+              initial={{ opacity: 0, x: -10 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+              transition={{ delay: 0.25 + index * 0.05, duration: 0.4 }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
               <span>{highlight}</span>
-            </li>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
       )}
-    </article>
+    </motion.article>
   );
 };
 
