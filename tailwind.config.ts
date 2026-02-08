@@ -57,7 +57,7 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Paper theme custom colors
+        // Tech theme custom colors
         paper: {
           DEFAULT: "hsl(var(--paper))",
           dark: "hsl(var(--paper-dark))",
@@ -72,10 +72,15 @@ export default {
           light: "hsl(var(--accent-burgundy-light))",
         },
         rule: "hsl(var(--rule))",
+        cyan: {
+          DEFAULT: "hsl(185 75% 50%)",
+          light: "hsl(185 65% 60%)",
+          dark: "hsl(185 85% 40%)",
+        },
       },
       fontFamily: {
-        display: ['Playfair Display', 'Georgia', 'serif'],
-        body: ['Source Sans 3', '-apple-system', 'sans-serif'],
+        display: ['Space Grotesk', '-apple-system', 'sans-serif'],
+        body: ['Inter', '-apple-system', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       borderRadius: {
