@@ -128,11 +128,9 @@ const ProjectCard = ({
           }`}>
             {images.map((image, index) => {
               const isVideo = image.type === "video";
-              const aspectClass = isVideo 
-                ? "aspect-square" 
-                : imageLayout === "portrait" 
-                  ? "aspect-[9/16]" 
-                  : "aspect-video";
+              const aspectClass = imageLayout === "portrait" 
+                ? "aspect-[9/16]" 
+                : "aspect-video";
               
               return (
                 <motion.figure

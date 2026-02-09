@@ -46,6 +46,12 @@ import planetzeLogin from "@/assets/planetze_login.png";
 import planetzeStats from "@/assets/planetze_stats.png";
 import planetzeStats2 from "@/assets/planetze_stats2.png";
 
+// Exspira
+import exspiraHomepage from "@/assets/exspira_homepage.jpg";
+import exspiraBillscan from "@/assets/exspira_billscan.jpg";
+import exspiraFilter from "@/assets/exspira_filter.jpg";
+import exspiraEmail from "@/assets/exspira_email.jpg";
+
 const portfolioData = {
   personal: {
     name: "Daniel Stevanus",
@@ -437,6 +443,65 @@ const Index = () => {
             </p>
             <p className="text-editorial text-ink-light">
               Each wavelength has an effect to the light refraction behavior making them refracted to different directions (angle). This is why we can see a rainbow-like lights when a white light go through a particular object material.
+            </p>
+          </Subsection>
+        </ProjectCard>
+
+        <div className="rule my-12" />
+
+        <ProjectCard
+          title="Exspira – Smart Grocery Management"
+          platform="React / Express.js / Anthropic Claude"
+          year="2024"
+          featured
+          description={[
+            "Awarded Best Category: Sustainability at Davinci Hackathon 2024.",
+            "Built an Express.js REST API to orchestrate Anthropic (Claude) calls for recipe generation, expiry estimation, and daily suggestions; implemented prompt templates and structured outputs to improve response reliability.",
+          ]}
+          features={[
+            "Express.js REST API with Anthropic Claude integration",
+            "Recipe generation based on available ingredients",
+            "Automated expiry date estimation per grocery item",
+            "Image-to-text receipt intake pipeline for auto-population",
+            "React web app with filtering and search UX",
+            "Daily meal plan suggestions to reduce food waste",
+          ]}
+          images={[
+            {
+              src: exspiraHomepage,
+              alt: "Exspira - Homepage",
+              caption: "Homepage with grocery inventory overview",
+            },
+            {
+              src: exspiraBillscan,
+              alt: "Exspira - Receipt Scanner",
+              caption: "Image-to-text receipt scanning for auto-population",
+            },
+            {
+              src: exspiraFilter,
+              alt: "Exspira - Filtering & Search",
+              caption: "Advanced filtering and search functionality",
+            },
+            {
+              src: exspiraEmail,
+              alt: "Exspira - Daily Suggestions",
+              caption: "AI-generated daily meal plan suggestions",
+            },
+          ]}
+          awards={["Best Category: Sustainability at Davinci Hackathon 2024"]}
+        >
+          <Subsection title="AI-Powered Recipe Generation">
+            <p className="text-editorial text-ink-light mb-4">
+              Built an Express.js REST API to orchestrate Anthropic (Claude) calls for recipe generation, expiry estimation, and daily suggestions. Implemented prompt templates and structured outputs to improve response reliability.
+            </p>
+            <p className="text-editorial text-ink-light">
+              The system analyzes available ingredients, considers expiry dates, and generates actionable daily meal plans to help users reduce food waste while making the most of their groceries.
+            </p>
+          </Subsection>
+
+          <Subsection title="Receipt Scanning & Auto-Population">
+            <p className="text-editorial text-ink-light">
+              Developed an image-to-text receipt intake pipeline that automatically populates grocery items into the system. The pipeline estimates expiry dates per item based on product category and typical shelf life, streamlining the user onboarding experience.
             </p>
           </Subsection>
         </ProjectCard>
