@@ -5,7 +5,7 @@ interface HeroProps {
   name: string;
   title: string;
   tagline: string;
-  email: string;
+  email?: string;
   phone?: string;
   github?: string;
   linkedin?: string;
@@ -89,15 +89,17 @@ const Hero = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
         >
-          <a
-            href={`mailto:${email}`}
-            className="group flex items-center gap-2 text-ink-muted hover:text-accent transition-all duration-300"
-          >
-            <span className="p-2 rounded-lg bg-secondary group-hover:bg-accent/10 group-hover:glow-sm transition-all duration-300">
-              <Mail size={16} />
-            </span>
-            <span>{email}</span>
-          </a>
+          {email && (
+            <a
+              href={`mailto:${email}`}
+              className="group flex items-center gap-2 text-ink-muted hover:text-accent transition-all duration-300"
+            >
+              <span className="p-2 rounded-lg bg-secondary group-hover:bg-accent/10 group-hover:glow-sm transition-all duration-300">
+                <Mail size={16} />
+              </span>
+              <span>{email}</span>
+            </a>
+          )}
 
           {phone && (
             <a

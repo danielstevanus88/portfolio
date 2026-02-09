@@ -1,6 +1,8 @@
-import { Award } from "lucide-react";
-import { motion } from "framer-motion";
+import { Award, X, ChevronDown, ChevronUp } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useScrollAnimation, scrollVariants, scrollTransition } from "@/hooks/useScrollAnimation";
+import type { ReactNode } from "react";
+import { useState } from "react";
 
 interface ProjectCardProps {
   title: string;
@@ -11,6 +13,8 @@ interface ProjectCardProps {
   images?: { src: string; alt: string; caption?: string }[];
   awards?: string[];
   featured?: boolean;
+  children?: ReactNode;
+  imageLayout?: "landscape" | "portrait";
 }
 
 const ProjectCard = ({
@@ -22,10 +26,15 @@ const ProjectCard = ({
   images,
   awards,
   featured = false,
+  children,
+  imageLayout = "landscape",
 }: ProjectCardProps) => {
   const { ref, isInView } = useScrollAnimation();
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string; caption?: string } | null>(null);
+  const [showDetails, setShowDetails] = useState(false);
 
   return (
+    <>
     <motion.article
       ref={ref}
       className={`py-12 ${featured ? "paper-card my-8 glow-box" : ""}`}
@@ -112,20 +121,29 @@ const ProjectCard = ({
           transition={{ ...scrollTransition, delay: 0.3 }}
         >
           <h4 className="text-caption mb-4">Gallery</h4>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className={`grid gap-4 ${
+            imageLayout === "portrait" 
+              ? "grid-cols-2 md:grid-cols-4" 
+              : "grid-cols-2 md:grid-cols-3"
+          }`}>
             {images.map((image, index) => (
               <motion.figure
                 key={index}
-                className="gallery-item"
+                className="gallery-item cursor-pointer"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
                 transition={{ delay: 0.35 + index * 0.1, duration: 0.5 }}
                 whileHover={{ scale: 1.02 }}
+                onClick={() => setSelectedImage(image)}
               >
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full aspect-video object-cover"
+                  className={`w-full object-cover ${
+                    imageLayout === "portrait" 
+                      ? "aspect-[9/16]" 
+                      : "aspect-video"
+                  }`}
                 />
                 {image.caption && (
                   <figcaption className="text-xs text-ink-muted p-3 bg-secondary/50">
@@ -137,7 +155,87 @@ const ProjectCard = ({
           </div>
         </motion.div>
       )}
+
+      {/* Extra content (e.g., deep dives specific to this project) */}
+      {children && (
+        <motion.div
+          className="mt-10"
+          variants={scrollVariants.fadeUp}
+          transition={{ ...scrollTransition, delay: 0.35 }}
+        >
+          <button
+            onClick={() => setShowDetails(!showDetails)}
+            className="flex items-center gap-2 text-accent hover:text-accent/80 transition-colors mb-4 text-sm font-medium uppercase tracking-widest"
+          >
+            {showDetails ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            {showDetails ? "Hide Details" : "Show Details"}
+          </button>
+          
+          <AnimatePresence>
+            {showDetails && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                style={{ overflow: "hidden" }}
+              >
+                {children}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      )}
     </motion.article>
+
+    {/* Image Modal */}
+    <AnimatePresence>
+      {selectedImage && (
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSelectedImage(null)}
+        >
+          <motion.button
+            className="absolute top-4 right-4 p-2 rounded-full bg-secondary/80 hover:bg-secondary transition-colors text-ink"
+            onClick={() => setSelectedImage(null)}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1 }}
+          >
+            <X size={24} />
+          </motion.button>
+          
+          <motion.div
+            className="relative max-w-6xl max-h-[90vh] overflow-hidden"
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              className="w-full h-full object-contain rounded-lg"
+            />
+            {selectedImage.caption && (
+              <motion.div
+                className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <p className="text-white text-center">{selectedImage.caption}</p>
+              </motion.div>
+            )}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+    </>
   );
 };
 
