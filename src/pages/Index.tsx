@@ -34,6 +34,7 @@ import raytracer3dPacman from "@/assets/3d_pacman.jpg";
 import raytracer3dMapping from "@/assets/3d_mapping.jpg";
 
 // 2D Light Tracer
+import photonVideo from "@/assets/photon.mp4";
 import lighttracer2dMovingphoton from "@/assets/2d_movingphoton.jpg";
 import lighttracer2dGravitational from "@/assets/2d_gravitational.jpg";
 import lighttracer2dDispersion from "@/assets/2d_dispersion.jpg";
@@ -79,6 +80,20 @@ const portfolioData = {
 const Index = () => {
   return (
     <main className="relative">
+      {/* Background Video */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        <video
+          className="w-full h-full object-cover opacity-10"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src={photonVideo} type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/80" />
+      </div>
+
       {/* Hero / Cover */}
       <Hero {...portfolioData.personal} />
 
@@ -236,23 +251,23 @@ const Index = () => {
           images={[
             {
               src: petclashLobby,
-              alt: "Pet Clash - Catching Animals",
-              caption: "Finding and catching wild animals",
+              alt: "Pet Clash - Lobby",
+              caption: "Game lobby where players prepare for battle",
             },
             {
               src: petclashPetmodels,
-              alt: "Pet Clash - Pet Fusion",
-              caption: "Fusing animals to create mutated pets",
+              alt: "Pet Clash - Pet Models",
+              caption: "Various pet models and their unique designs",
             },
             {
               src: petclashShop,
-              alt: "Pet Clash - Battle Arena",
-              caption: "Realtime battles with unique abilities",
+              alt: "Pet Clash - Shop",
+              caption: "In-game shop for purchasing items and upgrades",
             },
             {
               src: petclashMaingameplay,
-              alt: "Pet Clash - Pet Animations",
-              caption: "Over 30 different animated pets",
+              alt: "Pet Clash - Main Gameplay",
+              caption: "Core gameplay mechanics and battle system",
             },
           ]}
         >
@@ -377,7 +392,13 @@ const Index = () => {
           ]}
           images={[
             {
-              src: lighttracer2dMovingphoton,
+              src: photonVideo,
+              alt: "Photon Animation",
+              caption: "Animated photon traversing through the scene",
+              type: "video",
+            },
+            {
+              src: lighttracer2dLightcolor,
               alt: "2D Light Tracer - Real-time Rendering",
               caption: "Real-time rendering with draggable objects",
             },

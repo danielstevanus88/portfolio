@@ -10,7 +10,7 @@ interface ProjectCardProps {
   year: string;
   description: string[];
   features?: string[];
-  images?: { src: string; alt: string; caption?: string }[];
+  images?: { src: string; alt: string; caption?: string; type?: "image" | "video" }[];
   awards?: string[];
   featured?: boolean;
   children?: ReactNode;
@@ -30,7 +30,7 @@ const ProjectCard = ({
   imageLayout = "landscape",
 }: ProjectCardProps) => {
   const { ref, isInView } = useScrollAnimation();
-  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string; caption?: string } | null>(null);
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string; caption?: string; type?: "image" | "video" } | null>(null);
   const [showDetails, setShowDetails] = useState(false);
 
   return (
@@ -126,32 +126,48 @@ const ProjectCard = ({
               ? "grid-cols-2 md:grid-cols-4" 
               : "grid-cols-2 md:grid-cols-3"
           }`}>
-            {images.map((image, index) => (
-              <motion.figure
-                key={index}
-                className="gallery-item cursor-pointer"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
-                transition={{ delay: 0.35 + index * 0.1, duration: 0.5 }}
-                whileHover={{ scale: 1.02 }}
-                onClick={() => setSelectedImage(image)}
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className={`w-full object-cover ${
-                    imageLayout === "portrait" 
-                      ? "aspect-[9/16]" 
-                      : "aspect-video"
-                  }`}
-                />
-                {image.caption && (
-                  <figcaption className="text-xs text-ink-muted p-3 bg-secondary/50">
-                    {image.caption}
-                  </figcaption>
-                )}
-              </motion.figure>
-            ))}
+            {images.map((image, index) => {
+              const isVideo = image.type === "video";
+              const aspectClass = isVideo 
+                ? "aspect-square" 
+                : imageLayout === "portrait" 
+                  ? "aspect-[9/16]" 
+                  : "aspect-video";
+              
+              return (
+                <motion.figure
+                  key={index}
+                  className="gallery-item cursor-pointer"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+                  transition={{ delay: 0.35 + index * 0.1, duration: 0.5 }}
+                  whileHover={{ scale: 1.02 }}
+                  onClick={() => setSelectedImage(image)}
+                >
+                  {isVideo ? (
+                    <video
+                      src={image.src}
+                      className={`w-full object-cover ${aspectClass}`}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                  ) : (
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className={`w-full object-cover ${aspectClass}`}
+                    />
+                  )}
+                  {image.caption && (
+                    <figcaption className="text-xs text-ink-muted p-3 bg-secondary/50">
+                      {image.caption}
+                    </figcaption>
+                  )}
+                </motion.figure>
+              );
+            })}
           </div>
         </motion.div>
       )}
@@ -216,11 +232,21 @@ const ProjectCard = ({
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={selectedImage.src}
-              alt={selectedImage.alt}
-              className="w-full h-full object-contain rounded-lg"
-            />
+            {selectedImage.type === "video" ? (
+              <video
+                src={selectedImage.src}
+                className="w-full h-full object-contain rounded-lg"
+                controls
+                autoPlay
+                loop
+              />
+            ) : (
+              <img
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                className="w-full h-full object-contain rounded-lg"
+              />
+            )}
             {selectedImage.caption && (
               <motion.div
                 className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6"
